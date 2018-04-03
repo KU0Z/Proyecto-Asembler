@@ -179,8 +179,8 @@ public class Form_Assembler extends javax.swing.JFrame {
      if(dialog.showOpenDialog(a) == JFileChooser.APPROVE_OPTION)
      {
         Btnrun.setEnabled(true);
-        JMGuardar.setEnabled(true);
-        JMCorrer.setEnabled(false);
+        JMGuardar.setEnabled(false);
+        JMCorrer.setEnabled(true);
         JMGuardar.setEnabled(false);
         archivo = dialog.getSelectedFile();
         nuevaRuta = archivo.getPath();
