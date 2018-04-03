@@ -18,6 +18,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu5ActionPerformed"/>
               </Events>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="JMCorrer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Correr"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JMCorrerMouseClicked"/>
+              </Events>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="JMGuardar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar archivo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JMGuardarMouseClicked"/>
+              </Events>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">

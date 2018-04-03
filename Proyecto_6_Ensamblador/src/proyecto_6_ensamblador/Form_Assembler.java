@@ -36,6 +36,8 @@ public class Form_Assembler extends javax.swing.JFrame {
         initComponents();
         Btnrun.setEnabled(false);
         BTnGuardar.setEnabled(false);
+        JMCorrer.setEnabled(false);
+        JMGuardar.setEnabled(false);
     }
 
     /**
@@ -57,6 +59,8 @@ public class Form_Assembler extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         MenuLeerArchivo = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        JMCorrer = new javax.swing.JMenu();
+        JMGuardar = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,6 +108,22 @@ public class Form_Assembler extends javax.swing.JFrame {
             }
         });
         MenuLeerArchivo.add(jMenu5);
+
+        JMCorrer.setText("Correr");
+        JMCorrer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMCorrerMouseClicked(evt);
+            }
+        });
+        MenuLeerArchivo.add(JMCorrer);
+
+        JMGuardar.setText("Guardar archivo");
+        JMGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMGuardarMouseClicked(evt);
+            }
+        });
+        MenuLeerArchivo.add(JMGuardar);
 
         jMenuBar2.add(MenuLeerArchivo);
 
@@ -159,7 +179,9 @@ public class Form_Assembler extends javax.swing.JFrame {
      if(dialog.showOpenDialog(a) == JFileChooser.APPROVE_OPTION)
      {
         Btnrun.setEnabled(true);
-        BTnGuardar.setEnabled(false);
+        JMGuardar.setEnabled(true);
+        JMCorrer.setEnabled(false);
+        JMGuardar.setEnabled(false);
         archivo = dialog.getSelectedFile();
         nuevaRuta = archivo.getPath();
      }
@@ -399,6 +421,7 @@ public class Form_Assembler extends javax.swing.JFrame {
         PrimeraPasada();
         SegundaPasada();
         BTnGuardar.setEnabled(true);
+        JMGuardar.setEnabled(true);
     }//GEN-LAST:event_BtnrunActionPerformed
 
     private void BTnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTnGuardarActionPerformed
@@ -429,6 +452,34 @@ public class Form_Assembler extends javax.swing.JFrame {
         // TODO add your handling code here:
         LeerArchivo();
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void JMCorrerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMCorrerMouseClicked
+        // TODO add your handling code here:
+        PrimeraPasada();
+        SegundaPasada();
+        BTnGuardar.setEnabled(true);
+        JMGuardar.setEnabled(true);
+    }//GEN-LAST:event_JMCorrerMouseClicked
+
+    private void JMGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMGuardarMouseClicked
+        // TODO add your handling code here:
+            JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Hack", "hack");
+        fileChooser.setFileFilter(filtro);
+        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();          
+            try {
+                FileWriter fw = new FileWriter(file.getPath()+".hack");
+                for (int i = 0; i < resultado.size(); i++) {
+                fw.write(resultado.get(i)+"\r\n");    
+                }                
+            fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Form_Assembler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_JMGuardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -468,6 +519,8 @@ public class Form_Assembler extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTnGuardar;
     private javax.swing.JButton Btnrun;
+    private javax.swing.JMenu JMCorrer;
+    private javax.swing.JMenu JMGuardar;
     private javax.swing.JMenu MenuLeerArchivo;
     private javax.swing.JTextArea TALeido;
     private javax.swing.JTextArea TAresultado;
